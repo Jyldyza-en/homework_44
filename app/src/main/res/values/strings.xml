@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">homework_44</string>
+    <string name="editTextHint">Type here..</string>
+    <string name="btn_add">ADD</string>
+    <string name="itemText">Text</string>
+    <string name="contentDescription">contentDescription</string>
+</resources>
