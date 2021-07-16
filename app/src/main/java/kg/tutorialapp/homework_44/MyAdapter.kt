@@ -8,7 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdapter(data: List<String>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+
+class MyAdapter(data: List<String>, var itemClickListener: OnItemClickListener ) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     private var listData: MutableList<String> = data as MutableList<String>
 
@@ -21,10 +22,17 @@ class MyAdapter(data: List<String>) : RecyclerView.Adapter<MyAdapter.MyViewHolde
 
             text.text = property
 
-            delete.setOnClickListener { deleteItem(index) }
+            delete.setOnClickListener {
+                itemClickListener.onItemClick(index)
+            }
+            
 
         }
     }
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
@@ -45,5 +53,6 @@ class MyAdapter(data: List<String>) : RecyclerView.Adapter<MyAdapter.MyViewHolde
         listData.removeAt(index)
         notifyDataSetChanged()
     }
+
 
 }
